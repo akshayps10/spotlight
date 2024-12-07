@@ -14,7 +14,7 @@ const SignInForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted with email:", email, "password:", password);
-    axios.post("http://localhost:3001/sign-in", { email, password })
+    axios.post("https://journal-spotlight-backend-4.onrender.com/sign-in", { email, password })
     .then(response => {
       if (response.data.status === "success") {
         localStorage.setItem("token", response.data.token); 

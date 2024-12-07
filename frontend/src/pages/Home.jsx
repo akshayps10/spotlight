@@ -8,7 +8,7 @@ import axios from "axios";
 
 const fetchArticles = async () => {
   try {
-    const response = await axios.get("http://localhost:3001/articles"); 
+    const response = await axios.get("https://journal-spotlight-backend-4.onrender.com/articles"); 
     return response.data;
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -83,7 +83,7 @@ const Home = () => {
                   <div className="article-card border bg-success bg-opacity-25 p-3">
                     {article.image ? (
                       <img
-                        src={`http://localhost:3001${article.image}`}
+                        src={`https://journal-spotlight-backend-4.onrender.com${article.image}`}
                         alt={`Article ${article.id}`}
                         className="img-fluid mb-3"
                         style={{ maxHeight: "200px", objectFit: "cover" }}
