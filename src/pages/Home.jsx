@@ -83,7 +83,7 @@ const Home = () => {
                   <div className="article-card border bg-success bg-opacity-25 p-3">
                     {article.image ? (
                       <img
-                        src={`https://journal-spotlight-backend-4.onrender.com${article.image}`}
+                        src={"https://journal-spotlight-backend-4.onrender.com${article.image}"}
                         alt={`Article ${article.id}`}
                         className="img-fluid mb-3"
                         style={{ maxHeight: "200px", objectFit: "cover" }}
