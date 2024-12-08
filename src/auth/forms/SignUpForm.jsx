@@ -11,7 +11,7 @@ function SignUpForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/sign-up", { name, email, password })
+      .post("https://journal-spotlight-backend-4.onrender.com/sign-up", { name, email, password })
       .then((result) => console.log(result))
       .catch((err) => setError("Error: Unable to register. Please try again."));
   };
