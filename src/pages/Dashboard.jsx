@@ -17,7 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get("https://journal-spotlight-backend-4.onrender.com/dashboard", {
+        const response = await axios.get(`https://journal-spotlight-backend-4.onrender.com/dashboard`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { name, articles } = response.data.user;
@@ -41,7 +41,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await axios.post("https://journal-spotlight-backend-4.onrender.com/add-article", formData, {
+      const response = await axios.post(`https://journal-spotlight-backend-4.onrender.com/add-article`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -59,7 +59,7 @@ const Dashboard = () => {
   // Handle delet
   const handleDeleteArticle = async (articleId) => {
     try {
-      await axios.delete(`"https://journal-spotlight-backend-4.onrender.com/delete-article/${articleId}`, {
+      await axios.delete(`https://journal-spotlight-backend-4.onrender.com/delete-article/${articleId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setArticles(articles.filter((article) => article._id !== articleId));
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.put(
-        `"https://journal-spotlight-backend-4.onrender.com/update-article/${editingArticle._id}`,
+        `https://journal-spotlight-backend-4.onrender.com/update-article/${editingArticle._id}`,
         formData,
         {
           headers: {
@@ -142,7 +142,7 @@ const Dashboard = () => {
                 <td>
                   {article.image ? (
                     <img
-                      src={`"https://journal-spotlight-backend-4.onrender.com${article.image}`}
+                      src={`https://journal-spotlight-backend-4.onrender.com${article.image}`}
                       alt="Article"
                       style={{ width: "50px", height: "50px", objectFit: "cover" }}
                     />
@@ -152,16 +152,16 @@ const Dashboard = () => {
                 </td>
                 <td>
                   <button
-                    className="btn btn-danger mb-5 me-2"
+                    className="btn btn-danger mb-5 me-3 "
                     onClick={() => handleDeleteArticle(article._id)}
                   >
                     <i className="fa-solid fa-trash"></i>
                   </button>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary mb-5"
                     onClick={() => {
                       setEditingArticle(article);
-                      setImagePreview(`"https://journal-spotlight-backend-4.onrender.com${article.image}`);
+                      setImagePreview(`https://journal-spotlight-backend-4.onrender.com${article.image}`);
                       setEditModal(true);
                     }}
                   >
