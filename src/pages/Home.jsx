@@ -142,15 +142,15 @@ const Home = () => {
         <Row className="align-items-center py-5 justify-content-center mx-3">
           <Col md={6} className="text-center mb-4 mb-md-0 text-md-start">
             <h2 className="fw-bold mb-4">
-              Want to know more about today's{" "}
-              <span className="text-danger">TOP 10 news</span>?
+              TRENDING{" "}
+              <span className="text-danger">ONLINE NEWS PLATFORM</span>
             </h2>
             <Link to={"/News"}>
               <Button
                 className="bg-warning border-3 text-dark px-4 rounded-pill fw-semibold"
                 style={{ width: "fit-content" }}
               >
-                VIEW ARTICLES <i className="text-danger bi-arrow-right fs-5"></i>
+                USER FEEDBACKS <i className="text-danger bi-arrow-right fs-5"></i>
               </Button>
             </Link>
             <p className="mt-3 text-secondary">Checkout these top news articles!</p>

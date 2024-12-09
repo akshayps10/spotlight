@@ -59,7 +59,7 @@ const Dashboard = () => {
   // Handle delet
   const handleDeleteArticle = async (articleId) => {
     try {
-      await axios.delete("https://journal-spotlight-backend-4.onrender.com/delete-article/${articleId}", {
+      await axios.delete(`https://journal-spotlight-backend-4.onrender.com/delete-article/${articleId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setArticles(articles.filter((article) => article._id !== articleId));
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.put(
-        "https://journal-spotlight-backend-4.onrender.com/update-article/${editingArticle._id}",
+        `https://journal-spotlight-backend-4.onrender.com/update-article/${editingArticle._id}`,
         formData,
         {
           headers: {
@@ -142,7 +142,7 @@ const Dashboard = () => {
                 <td>
                   {article.image ? (
                     <img
-                      src={"https://journal-spotlight-backend-4.onrender.com${article.image}"}
+                      src={`https://journal-spotlight-backend-4.onrender.com${article.image}`}
                       alt="Article"
                       style={{ width: "50px", height: "50px", objectFit: "cover" }}
                     />
@@ -161,7 +161,7 @@ const Dashboard = () => {
                     className="btn btn-primary mb-5"
                     onClick={() => {
                       setEditingArticle(article);
-                      setImagePreview("https://journal-spotlight-backend-4.onrender.com${article.image}");
+                      setImagePreview(`https://journal-spotlight-backend-4.onrender.com${article.image}`);
                       setEditModal(true);
                     }}
                   >
