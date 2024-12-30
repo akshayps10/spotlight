@@ -17,7 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/dashboard", {
+        const response = await axios.get("https://journal-spotlight-backend-4.onrender.com/dashboard", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const { name, articles } = response.data.user;
@@ -41,7 +41,7 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/add-article", formData, {
+      const response = await axios.post("https://journal-spotlight-backend-4.onrender.com/add-article", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -59,7 +59,7 @@ const Dashboard = () => {
   // Handle delet
   const handleDeleteArticle = async (articleId) => {
     try {
-      await axios.delete(`http://localhost:3001
+      await axios.delete(`https://journal-spotlight-backend-4.onrender.com
 /delete-article/${articleId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -80,7 +80,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3001/update-article/${editingArticle._id}`,
+        `https://journal-spotlight-backend-4.onrender.com/update-article/${editingArticle._id}`,
         formData,
         {
           headers: {
@@ -143,7 +143,7 @@ const Dashboard = () => {
                 <td>
                 {article.imageData ? (
                       <img
-                        src={`http://localhost:3001/articles/${article._id}/image`}
+                        src={`https://journal-spotlight-backend-4.onrender.com/articles/${article._id}/image`}
                         alt={`Article ${article.title}`}
                         className="img-fluid mb-3"
                         style={{ maxHeight: "200px", objectFit: "cover" }}
@@ -163,7 +163,7 @@ const Dashboard = () => {
                     className="btn btn-primary mb-5"
                     onClick={() => {
                       setEditingArticle(article);
-                      setImagePreview(`http://localhost:3001${article.image}`);
+                      setImagePreview(`https://journal-spotlight-backend-4.onrender.com${article.image}`);
                       setEditModal(true);
                     }}
                   >
