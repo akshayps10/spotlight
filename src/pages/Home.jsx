@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import { Row, Col, Button, Image } from "react-bootstrap";
 import axios from "axios";
 
-
-
-
 const fetchArticles = async () => {
   try {
-    const response = await axios.get("https://journal-spotlight-backend-4.onrender.com/articles"); 
+    const response = await axios.get("http://localhost:3001/articles"); 
     return response.data;
   } catch (error) {
     console.error("Error fetching articles:", error);
@@ -49,7 +46,6 @@ const Home = () => {
 
   return (
     <div>
-     
       <div
         className="d-flex flex-column gap-3 py-5 px-4 mx-auto"
         style={{ maxWidth: "960px" }}
@@ -58,33 +54,35 @@ const Home = () => {
           Welcome to <span className="text-danger">JOURNAL SPOTLIGHT</span>
         </h1>
         <p className="text-secondary fs-5">
-          Stay informed with the latest headlines, in-depth analysis, and breaking news.
+          Stay informed with the latest headlines, in-depth analysis, and
+          breaking news.
         </p>
         <p className="text-muted fst-italic">Stay informed, stay ahead.</p>
-        <Link to={"/about"}>
+        <Link to={"/news"}>
           <Button
             className="bg-warning border-0 text-dark py-2 px-4 rounded-pill fw-semibold shadow d-flex align-items-center gap-2"
             style={{ width: "fit-content" }}
           >
-            MORE ABOUT WE <i className="text-danger bi-arrow-right fs-5"></i>
+            EXPLORE MORE <i className="text-danger bi-arrow-right fs-5"></i>
           </Button>
         </Link>
       </div>
 
-   
-      <div className="container my-5 ">
+      <div className="container my-5">
         <h2 className="text-center mb-4">Latest Articles</h2>
         <Row className="g-4">
           {Array.isArray(articles) && articles.length > 0 ? (
             articles
-              .filter((article) => article && article.title && article.description)
+              .filter(
+                (article) => article && article.title && article.description
+              )
               .map((article, index) => (
                 <Col key={index} xs={12} sm={6} md={4}>
                   <div className="article-card border bg-success bg-opacity-25 p-3">
-                    {article.image ? (
+                    {article.imageData ? (
                       <img
-                        src={"https://journal-spotlight-backend-4.onrender.com${article.image}"}
-                        alt={`Article ${article.id}`}
+                        src={`http://localhost:3001/articles/${article._id}/image`}
+                        alt={`Article ${article.title}`}
                         className="img-fluid mb-3"
                         style={{ maxHeight: "200px", objectFit: "cover" }}
                       />
@@ -93,9 +91,6 @@ const Home = () => {
                     )}
                     <h3 className="h5">{article.title}</h3>
                     <p className="text-muted">{article.description}</p>
-                    
-                
-                    
                   </div>
                 </Col>
               ))
@@ -142,18 +137,20 @@ const Home = () => {
         <Row className="align-items-center py-5 justify-content-center mx-3">
           <Col md={6} className="text-center mb-4 mb-md-0 text-md-start">
             <h2 className="fw-bold mb-4">
-              TRENDING{" "}
-              <span className="text-danger">ONLINE NEWS PLATFORM</span>
+              TRENDING <span className="text-danger">ONLINE NEWS PLATFORM</span>
             </h2>
             <Link to={"/News"}>
               <Button
                 className="bg-warning border-3 text-dark px-4 rounded-pill fw-semibold"
                 style={{ width: "fit-content" }}
               >
-                USER FEEDBACKS <i className="text-danger bi-arrow-right fs-5"></i>
+                TRENDING NEWS{" "}
+                <i className="text-danger bi-arrow-right fs-5"></i>
               </Button>
             </Link>
-            <p className="mt-3 text-secondary">Checkout these top news articles!</p>
+            <p className="mt-3 text-secondary">
+              Checkout these top news articles!
+            </p>
             <Link to={"/sign-in"}>
               <Button variant="warning" size="lg" className="mt-3 fw-semibold">
                 Create Your Own Article
