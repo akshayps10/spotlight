@@ -11,7 +11,7 @@ const fetchArticles = async () => {
     console.error("Error fetching articles:", error);
     throw error;
   }
-};
+}
 
 const FeatureCard = ({ title, description, icon }) => (
   <div className="card border-0 shadow-sm p-4">
